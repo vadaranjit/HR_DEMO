@@ -1,0 +1,257 @@
+Q.1)diff between union and union all
+
+Union:
+1.Union removes duplicates
+2.Union is slower than union all
+3.Union takes more memory than union all
+
+Union all:
+1.Union all not removes duplicates
+2.Union all is faster than union
+3.Union all takes less memory than union
+
+Q.2)diff between primary key and foreign key
+
+primary key:
+1.Primary identifies unique records from column.
+2.Primary key contains unique and not null values
+3.A table can have only one primary key
+4.Syntax:colname datatype primary key
+
+Foreign key:
+1.Foreign key is a group of columns in one table that refers primary key in anathoer table.
+2.Foreign key allows duplicate values and null values
+3.wheres it can have multiple foreign keys
+4.Synatax:colname datatype foreign key references primarykey_table(pk_colname)
+
+Q.3)How to identify duplicate records form table.Tell me the query
+
+Select col1,col2,count(*) from table_name group by col1,col2 having Count(*)>1
+
+with cte as 
+(select *,dense_rank() over (partition by id order by id) as rn from table)
+select * from cte where rn>1
+
+Q.4)How to delete dplicate records
+
+with cte as
+(select *,row_number() over (partition by id order by id) as rn from Table_name)
+delete from cte where rn>1
+
+Q.5)diff between DBMS/RDMS
+
+       DBMS
+--data store in a file format                --data stored in  a table format
+--less amt of data can be store               --hudge amt of data can be store
+--sql is not used in dbms                     --in rdms sql is used
+--there is no relation between two or        --relation between two or more table 
+  more table
+
+Q.6)4)what is aggregate functions
+ 
+aggregate functions are used to perform calculations on multiple rows of a single column
+it returns single value
+count,max,min,avg,sum there are agregate functions
+with aggregate functions having and group clause used
+
+Q.7)difference between Where and having clause
+
+Both are used to filer the data
+
+where:
+1.where clause is used to filter the rows
+2.where clause filter the rows before the grouping
+
+having:
+1.having clause is used with aggregate functions
+2.it is used to filter after the grouping
+
+Q.8)What are the contraints in sql 
+
+Q.9)
+A.1,1,null,blank
+B.1,1,null,blank
+
+inner=5 records 1,1,1,1,blank
+left=6 records 1,1,1,1,null,blank
+right=same
+full=7records 1,1,1,1,null,blank,null
+
+
+Q.10)display even/odd reords
+
+select * from employee where empid%2=0
+select * from employee where empid%2=1
+
+Q.11)Join 3 tables and display max salary
+
+SELECT d.department_name, MAX(s.salary) as max_salary
+FROM employees e
+JOIN departments d ON e.department_id = d.department_id
+JOIN salaries s ON e.employee_id = s.employee_id
+GROUP BY d.department_name;
+
+Q.12)6.Display the employee names of all employess who are working in account
+department.
+
+select empname from empdetails where dept='Account'
+
+Q.13)Display the employee number who are earning same salary. 
+
+select e1.empno from empdetails e1 join empdetails e2 on e1.salary=e2.salary and e1.empno!=e2.empno
+
+Q.14)
+A.1,null,2
+B:1,null,null,3,4
+
+inner=1 record
+left=3 records
+right=5 records
+full=7 records
+
+Q.15)
+
+Both joins and set operators are used in SQL to combine data from two or more tables. 
+
+join:
+1.Joins are used to combine columns from two or more tables based on a related column between the tables.
+2.There are different types of joins, including INNER JOIN, LEFT JOIN, RIGHT JOIN, and FULL OUTER JOIN.
+
+set operator:
+1.Set operators are used to combine the results of two or more SELECT statements into a single result set.
+2.The four set operators in SQL are UNION, UNION ALL, INTERSECT, and EXCEPT.
+
+Q.16)What is data integrity
+
+Data integrity refers to the accuracy, consistency, and reliability of data over its entire lifecycle. It is the process of ensuring that data is complete, correct, and consistent throughout its entire lifespan, from creation to deletion. Data integrity is a critical aspect of data management and is essential for ensuring the usability and reliability of data.
+Data integrity can be achieved through various methods, including:Data validation,data normalisation
+
+Q.17)What is data perging
+Data purging, also known as data pruning or data cleansing, is the process of permanently deleting or removing data from a database or other data storage system. This is typically done to remove data that is no longer needed, outdated, or inaccurate, and to free up storage space.
+Data purging is typically done for the following reasons:
+1.To improve system performance
+2.To protect sensitive data
+3.To reduce storage costs
+
+
+SQL Interview questions
+ 
+1. What Is The SQL Query Used To Find The 2nd /
+ 3rd / nth Highest Salary?
+
+2. What Is The SQL Query Used To Find All Employees
+ Who Also Hold The Managerial Position?
+-> SELECT * FROM EMPLOYEES 
+WHERE (EMPLOYEE_ID IN (SELECT MANAGER_ID FROM EMPLOYEES))
+
+3. What Is The SQL Query Used To Find The Names Of
+ The Employees That Begin With ‘A’?
+
+4. What Is The SQL Query Used To Fetch Alternate
+ Records From A Table?
+
+5. What Is The SQL Query Used To Fetch The
+ Common Records From Two Tables?
+
+6. What Is The SQL Query Used To Remove The
+ Duplicate Rows In Table?
+
+7. What Is The SQL Query Used To Find
+ The Last 5 Records From A Table?
+
+8. What Is The SQL Query Used To Find The Distinct
+Records Without Using Distinct Keyword?
+
+-> SELECT dept_id FROM Employee GROUP BY dept_id;
+
+9. What Is The SQL Query Used To Find The
+Maximum Salary Of Each Department?
+-> SELECT dept_id, MAX(salary) FROM Employee E
+RIGHT OUTER JOIN Department D
+ON (E.dept_id = D.id) 
+GROUP BY dept_id;
+
+10. How Will You Change The Datatype Of A Column?
+-> alter table employee
+    Alter column A varchar(20)
+
+11.What Is The Difference Between Unique Key,
+Primary key And Foreign key?
+ 
+12.What Is ‘SELECT’ Statement? What Are Some
+Common Clauses Used With ‘SELECT’ Query In SQL?
+
+13. What Is A Join? List Different Types Of Joins.
+
+14. What Are ‘TRUNCATE’, ‘DELETE’ And ‘DROP’
+Statements In SQL?
+
+15. What Is The Difference Between ‘IN’ And
+‘BETWEEN’ Operators In SQL?
+
+IN:
+1.In operator used to point of the values or navigate the values which are mension in in clause
+e.g:select * from table where col in (value1,valuee2,value3)
+
+Between:
+1.Between operator used to dispalys the values in between the range
+e.g:select * from tablname where colnam between value1 and value2
+
+16. What Is The Default Ordering Of Data Using The
+ORDER BY Clause? How Could It Be Changed?
+ASC is default ordering 
+
+17. What Is Union, Union ALL, Minus And Intersect?
+
+18. What Is Normalization? What Are The Various
+Forms Of Normalization
+
+19. Role and responsibilities
+20. Display only domain name from email
+
+select substring(email,charindex('@',email,1),len(email)) from tablename
+
+SELECT RIGHT(email, CHARINDEX('@', REVERSE(email))-1) AS domain_name FROM empdetails ;
+
+21. Write a query to capitalize 1st  characterof fname
+-> select concat(upper(substring(fname,1,1)),substring(fname,2,len(fname)))
+ 
+22. Concanate fname and lname
+ -> select concat(fname, ' ', lname) from employee
+***************************************************************************************************
+BIG DATA
+
+Q)Internal and external tables
+
+In Hive, an internal table and an external table are two different types of tables that are used to store data. 
+The main difference between the two is in how they handle data storage and management.
+
+Internal Table:
+
+Internal tables store data in the HDFS in a Hive-managed location.
+Hive is responsible for managing the internal table's data, including data backup and metadata.
+When an internal table is dropped, both the metadata and the data stored in the table are deleted.
+Internal tables are used for Hive-specific data processing, such as creating partitions and indexes.
+
+  External Table:
+
+External tables store data in a user-specified location in HDFS or in an external file system.
+External tables rely on the user or external application to manage the data stored in the table.
+When an external table is dropped, only the metadata is deleted, and the data stored in the external location remains intact.
+External tables are typically used for integrating data from multiple sources or for performing analysis on data stored outside of Hive.
+
+In summary, an internal table is fully managed by Hive and stores data in a Hive-managed location, 
+while an external table is not managed by Hive and stores data in a user-specified location. 
+The choice between internal and external tables depends on the use case and requirements of the specific data processing scenario.
+
+
+Q)what is data partition and bucketing
+
+partitioning and bucketing are techniques used in big data systems to improve data processing and querying performance.
+ Partitioning divides data based on a specific column or set of columns, 
+while bucketing divides data into buckets or groups based on a hash function applied to a specific column.
+ Both techniques can improve query performance by reducing the amount of data that needs to be scanned.
+
+
+
+ 
