@@ -1,0 +1,44 @@
+Restore Dollar $ = Ctrl+s
+clear consol = Ctrl+l
+
+$ git config --global user.name "vadaranjit"
+$ git config --global user.email "ranjitvadarofficial@gmail.com"
+$ git config --global user.name
+$ git config --global user.email
+$ git config --global --unset user.
+$ cd "C:\Users\RANJIT\Desktop\GitBushNew\test"
+$ ls
+$ touch demo.html
+$ git init
+$ git status
+$ git status -s
+$ git add --a
+$ git add -A
+$ git add .
+$ git commit -a -m "done"
+$ git commit -m "this is my first gitbush repo"
+$ git remote add origin "https://github.com/vadaranjit/GitBushDemo.git"
+$ git push -u origin master
+$ git clone <url here>
+$ git commit -m "First Commiit newtxt file"
+$ git push origin main
+$ git pull origin main
+$ git branch
+$ git branch dev
+$ git branch LoginPage
+$ git checkout LoginPage
+$ git checkout -b SellPage
+$ git merge homepage 
+$ git add demo.html
+$ git checkout hsfg.txt
+$ git log
+$ git log -p -5 
+$ git diff
+$ git diff –staged
+$ git checkout –f
+$ git rm --cached demo.html
+$ git rm Demo.html 
+$ git rm -f ranjit.txt
+
+
+https://midnightgamer.medium.com/setup-the-fish-shell-on-windows-step-by-step-6f56c3adf6fc
